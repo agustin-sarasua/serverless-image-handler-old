@@ -26,6 +26,11 @@ RUN chmod +x serverless-image-handler/deployment/run-unit-tests.sh
 RUN cd serverless-image-handler/deployment && \
     ./build-s3-dist.sh $DIST_OUTPUT_BUCKET $VERSION
 
+# docker run -e AWS_ACCESS_KEY_ID=XXX -e AWS_SECRET_ACCESS_KEY=XXX serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/ s3://my-bucket-name-us-east-1/serverless-image-handler/my-version/ --recursive --exclude "*" --include "*.zip"
+# docker run -e AWS_ACCESS_KEY_ID=XXX -e AWS_SECRET_ACCESS_KEY=XXX serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/serverless-image-handler.template s3://cf-templates-dyvdnyma9kxw-us-east-1/serverless-image-handler/my-version/
+
+
+
 # Make the dir and to install all packages into packages/
 #RUN mkdir -p packages/ && \
 #    pip install uuid -t packages/
