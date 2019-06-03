@@ -16,9 +16,9 @@ chmod +x ./run-unit-tests.sh  \n
 ## Building distributable for customization
 * Configure the bucket name of your target Amazon S3 distribution bucket
 ```
-export TEMPLATE_OUTPUT_BUCKET=my-bucket-name # bucket where cfn template will reside
-export DIST_OUTPUT_BUCKET=my-bucket-name # bucket where customized code will reside
-export VERSION=my-version # version number for the customized code
+export TEMPLATE_OUTPUT_BUCKET=cf-templates-dyvdnyma9kxw-us-east-1 # bucket where cfn template will reside
+export DIST_OUTPUT_BUCKET=ligansa-functions # bucket where customized code will reside
+export VERSION=$LATEST # version number for the customized code
 ```
 _Note:_ You would have to create 2 buckets, one named 'my-bucket-name' and another regional bucket named 'my-bucket-name-<aws_region>'; aws_region is where you are testing the customized solution. Also, the assets  in bucket should be publicly accessible.
 

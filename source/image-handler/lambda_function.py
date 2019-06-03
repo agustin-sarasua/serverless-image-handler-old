@@ -51,6 +51,8 @@ thumbor_config_path = '/var/task/image_handler/thumbor.conf'
 thumbor_socket = '/tmp/thumbor'
 unix_path = 'http+unix://%2Ftmp%2Fthumbor'
 
+ALLOWED_DIMENSIONS = os.environ.get('ALLOWED_DIMENSIONS').split(",");
+
 ##############################################################################
 # helper methods
 #
@@ -335,6 +337,10 @@ def lambda_handler(event, context):
         if event['requestContext']['httpMethod'] != 'GET' and\
            event['requestContext']['httpMethod'] != 'HEAD':
             return response_formater(status_code=405)
+        http_path = event['path']
+        dimension = http_path.split("/")[1]
+        if dimension not in ALLOWED_DIMENSIONS:
+            return response_formater(status_code=403)
         result = call_thumbor(event)
         if str(os.environ.get('SEND_ANONYMOUS_DATA')).upper() == 'YES':
             send_metrics(event, result, start_time)
