@@ -337,8 +337,13 @@ def lambda_handler(event, context):
         if event['requestContext']['httpMethod'] != 'GET' and\
            event['requestContext']['httpMethod'] != 'HEAD':
             return response_formater(status_code=405)
+        
         http_path = event['path']
+        logging.debug('http_path: %s' % (http_path))
         dimension = http_path.split("/")[1]
+        logging.debug('dimension: %s' % (dimension))
+        logging.debug('ALLOWED_DIMENSIONS:')
+        logging.debug(ALLOWED_DIMENSIONS)
         if dimension not in ALLOWED_DIMENSIONS:
             return response_formater(status_code=403)
         result = call_thumbor(event)
