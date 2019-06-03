@@ -1,4 +1,5 @@
 # Docker Run
+Note: Remember to push to master
 
 docker build -t serverless-image-handler .
 
