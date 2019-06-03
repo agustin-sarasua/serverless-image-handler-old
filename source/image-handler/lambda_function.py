@@ -340,7 +340,7 @@ def lambda_handler(event, context):
         
         http_path = event['path']
         logging.debug('http_path: %s' % (http_path))
-        dimension = http_path.split("/")[1]
+        dimension = http_path.split("/")[2]
         logging.debug('dimension: %s' % (dimension))
         logging.debug('ALLOWED_DIMENSIONS:')
         logging.debug(ALLOWED_DIMENSIONS)

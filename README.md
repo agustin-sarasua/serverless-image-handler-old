@@ -1,3 +1,11 @@
+# Docker Run
+
+docker build -t serverless-image-handler .
+
+docker run -e AWS_ACCESS_KEY_ID=XXXX -e AWS_SECRET_ACCESS_KEY=XXXX serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/ s3://my-bucket-name-us-east-1/serverless-image-handler/my-version/ --recursive --exclude "*" --include "*.zip"
+
+docker run -e AWS_DEFAULT_REGION=us-east-1 -e AWS_ACCESS_KEY_ID=XXXXX -e AWS_SECRET_ACCESS_KEY=XXXX serverless-image-handler:latest aws lambda update-function-code --function-name serverless-image-handler-ImageHandlerFunction-DRY11YTDN6TG --s3-bucket my-bucket-name-us-east-1 --s3-key serverless-image-handler/my-version/serverless-image-handler.zip
+
 # AWS Serverless Image Handler Lambda wrapper for Thumbor
 A solution to dynamically handle images on the fly, utilizing Thumbor (thumbor.org).
 Published version, additional details and documentation are available here: https://aws.amazon.com/answers/web-applications/serverless-image-handler/
