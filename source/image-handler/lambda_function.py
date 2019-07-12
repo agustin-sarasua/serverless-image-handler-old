@@ -340,10 +340,12 @@ def lambda_handler(event, context):
         
         http_path = event['path']
         logging.debug('http_path: %s' % (http_path))
-        dimension = http_path.split("/")[2]
-        logging.debug('dimension: %s' % (dimension))
-        logging.debug('ALLOWED_DIMENSIONS:')
-        logging.debug(ALLOWED_DIMENSIONS)
+        parts = http_path.split("/")
+        if len(parts) >= 3:
+            dimension = parts[2]
+            logging.debug('dimension: %s' % (dimension))
+            logging.debug('ALLOWED_DIMENSIONS:')
+            logging.debug(ALLOWED_DIMENSIONS)
         if dimension not in ALLOWED_DIMENSIONS:
             return response_formater(status_code=403)
         result = call_thumbor(event)

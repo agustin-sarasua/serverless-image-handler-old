@@ -91,7 +91,9 @@ pwd
 # SO-SIH-159 - 07/25/2018 - Pycurl ssl backend
 # Configuring compile time ssl backend
 # https://stackoverflow.com/questions/21096436/ssl-backend-error-when-using-openssl
-export PYCURL_SSL_LIBRARY=nss
+# pip uninstall pycurl
+export PYCURL_SSL_LIBRARY=openssl
+# pip install pycurl
 
 # to help with debugging
 echo "which curl && curl --version"
