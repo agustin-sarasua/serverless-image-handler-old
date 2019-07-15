@@ -9,13 +9,13 @@ git push -u origin master
 docker build -t serverless-image-handler .
 
 # Upload serverless-image-handler.template to S3
-docker run -e AWS_ACCESS_KEY_ID=AKIAUKOGBCBSTH5SIEJ3 -e AWS_SECRET_ACCESS_KEY=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 serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/serverless-image-handler.template s3://cf-templates-dyvdnyma9kxw-us-east-1/serverless-image-handler/my-version/
+docker run -e AWS_ACCESS_KEY_ID=XXX -e AWS_SECRET_ACCESS_KEY=XXX serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/serverless-image-handler.template s3://cf-templates-dyvdnyma9kxw-us-east-1/serverless-image-handler/my-version/
 
 # Upload lambda functions to S3
-docker run -e AWS_ACCESS_KEY_ID=AKIAUKOGBCBSTH5SIEJ3 -e AWS_SECRET_ACCESS_KEY=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 serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/ s3://my-bucket-name-us-east-1/serverless-image-handler/my-version/ --recursive --exclude "*" --include "*.zip"
+docker run -e AWS_ACCESS_KEY_ID=XXX -e AWS_SECRET_ACCESS_KEY=XXX serverless-image-handler:latest aws s3 cp /deploy/serverless-image-handler/deployment/dist/ s3://my-bucket-name-us-east-1/serverless-image-handler/my-version/ --recursive --exclude "*" --include "*.zip"
 
 # If you only want to update functions code without deploying
-docker run -e AWS_DEFAULT_REGION=us-east-1 -e AWS_ACCESS_KEY_ID=AKIAUKOGBCBSTH5SIEJ3 -e AWS_SECRET_ACCESS_KEY=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 serverless-image-handler:latest aws lambda update-function-code --function-name serverless-image-handler-ImageHandlerFunction-DRY11YTDN6TG --s3-bucket my-bucket-name-us-east-1 --s3-key serverless-image-handler/my-version/serverless-image-handler.zip
+docker run -e AWS_DEFAULT_REGION=us-east-1 -e AWS_ACCESS_KEY_ID=XXX -e AWS_SECRET_ACCESS_KEY=XXX serverless-image-handler:latest aws lambda update-function-code --function-name serverless-image-handler-ImageHandlerFunction-DRY11YTDN6TG --s3-bucket my-bucket-name-us-east-1 --s3-key serverless-image-handler/my-version/serverless-image-handler.zip
 
 # Deploy using CloudFromation console
 
