@@ -346,8 +346,8 @@ def lambda_handler(event, context):
             logging.debug('dimension: %s' % (dimension))
             logging.debug('ALLOWED_DIMENSIONS:')
             logging.debug(ALLOWED_DIMENSIONS)
-        if dimension not in ALLOWED_DIMENSIONS:
-            return response_formater(status_code=403)
+            if dimension not in ALLOWED_DIMENSIONS:
+                return response_formater(status_code=403)
         result = call_thumbor(event)
         if str(os.environ.get('SEND_ANONYMOUS_DATA')).upper() == 'YES':
             send_metrics(event, result, start_time)
