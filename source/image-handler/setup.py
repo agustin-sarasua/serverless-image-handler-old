@@ -41,7 +41,7 @@ setup(
         # Adding Rekognition
         'thumbor_rekognition==0.1.1',
         'tc_aws==6.2.10',
-        'opencv-python==3.2.0.6'
+        'opencv-python==3.4.7.28'
     ],
     extras_require={
             'tests': tests_require,
